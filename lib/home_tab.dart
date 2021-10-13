@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 
 import 'package:mutual_fund/widgets/home_card.dart';
 import 'package:mutual_fund/widgets/home_text_button.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 // import 'package:mutual_fund/widgets/home_slider.dart';
 
 import 'widgets/widgets.dart';
@@ -18,11 +17,6 @@ class HomeTabScreen extends StatefulWidget {
 class _HomeTabScreenState extends State<HomeTabScreen> {
   @override
   Widget build(BuildContext context) {
-    List<bool> boolList = [true, false];
-    int index = 0;
-
-    double _initialRating = 2.0;
-    IconData? _selectedIcon;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -65,43 +59,13 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
               height: 2,
             ),
             HomeText(),
-            HomeCard(
-                trailing: boolList[index]
-                    ? Text("High ",
-                        style: TextStyle(
-                          color: Colors.deepOrange,
-                        ))
-                    : Text("Low ",
-                        style: TextStyle(
-                          color: Colors.green,
-                        ))),
+            HomeCard(),
             HomeSlider(),
             SizedBox(
               height: 20,
             ),
             HomeButton(),
-            HomeCard(
-              trailing: RatingBar.builder(
-                initialRating: _initialRating,
-                minRating: 1,
-                // direction: _isVertical ? Axis.vertical : Axis.horizontal,
-                allowHalfRating: true,
-                unratedColor: Colors.amber.withAlpha(40),
-                itemCount: 5,
-                itemSize: 15.0,
-                itemPadding: EdgeInsets.symmetric(
-                  horizontal: 1.0,
-                ),
-                itemBuilder: (context, _) => Icon(
-                  _selectedIcon ?? Icons.star,
-                  color: Colors.amber,
-                ),
-                onRatingUpdate: (rating) {
-                  setState(() {});
-                },
-                updateOnDrag: true,
-              ),
-            ),
+            HomeCard(),
           ],
         ),
       ),

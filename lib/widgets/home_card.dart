@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class HomeCard extends StatefulWidget {
-  HomeCard({required ListTile trailing});
-
   @override
   _HomeCardState createState() => _HomeCardState();
 }
@@ -13,8 +11,8 @@ class _HomeCardState extends State<HomeCard> {
   Widget build(BuildContext context) {
     List<bool> boolList = [true, false];
 
-    // double _initialRating = 2.0;
-    // IconData? _selectedIcon;
+    double _initialRating = 2.0;
+    IconData? _selectedIcon;
 
     return Container(
       margin: const EdgeInsets.only(top: 20),
@@ -57,38 +55,37 @@ class _HomeCardState extends State<HomeCard> {
                               padding: const EdgeInsets.only(left: 6, top: 45),
                               child: ListTile(
                                 leading: Text("Returns 38.27% (1Y)"),
-                                // title: Align(
-                                //   child: boolList[index]
-                                //       ? Image.asset(
-                                //           'assets/icon3.png',
-                                //           color: Colors.deepOrange,
-                                //         )
-                                //       : Image.asset(
-                                //           'assets/icon3.png',
-                                //         ),
-                                //   alignment: Alignment(1.3, 0.1),
-                                // ),
-                                trailing: this.widget,
-                                // RatingBar.builder(
-                                //   initialRating: _initialRating,
-                                //   minRating: 1,
-                                //   // direction: _isVertical ? Axis.vertical : Axis.horizontal,
-                                //   allowHalfRating: true,
-                                //   unratedColor: Colors.amber.withAlpha(40),
-                                //   itemCount: 5,
-                                //   itemSize: 15.0,
-                                //   itemPadding: EdgeInsets.symmetric(
-                                //     horizontal: 1.0,
-                                //   ),
-                                //   itemBuilder: (context, _) => Icon(
-                                //     _selectedIcon ?? Icons.star,
-                                //     color: Colors.amber,
-                                //   ),
-                                //   onRatingUpdate: (rating) {
-                                //     setState(() {});
-                                //   },
-                                //   updateOnDrag: true,
-                                // ),
+                                title: Align(
+                                  child: boolList[index]
+                                      ? Image.asset(
+                                          'assets/icon3.png',
+                                          color: Colors.deepOrange,
+                                        )
+                                      : Image.asset(
+                                          'assets/icon3.png',
+                                        ),
+                                  alignment: Alignment(1.3, 0.1),
+                                ),
+                                trailing: RatingBar.builder(
+                                  initialRating: _initialRating,
+                                  minRating: 1,
+                                  // direction: _isVertical ? Axis.vertical : Axis.horizontal,
+                                  allowHalfRating: true,
+                                  unratedColor: Colors.amber.withAlpha(40),
+                                  itemCount: 5,
+                                  itemSize: 15.0,
+                                  itemPadding: EdgeInsets.symmetric(
+                                    horizontal: 1.0,
+                                  ),
+                                  itemBuilder: (context, _) => Icon(
+                                    _selectedIcon ?? Icons.star,
+                                    color: Colors.amber,
+                                  ),
+                                  onRatingUpdate: (rating) {
+                                    setState(() {});
+                                  },
+                                  updateOnDrag: true,
+                                ),
                                 // boolList[index]
                                 //     ? Text("High ",
                                 //         style: TextStyle(

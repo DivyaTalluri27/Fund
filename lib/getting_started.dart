@@ -1,10 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:mutual_fund/palatte.dart';
-
-import 'helpers/constants.dart';
+import 'package:mutual_fund/widgets/getting_started_widgets.dart';
 
 class OnBoardingPage extends StatefulWidget {
   @override
@@ -25,12 +22,6 @@ class _OnBoardingPageState extends State<OnBoardingPage>
       reverseDuration: Duration(milliseconds: 100),
     );
   }
-
-  static List<String> monthlyList = UserConstantValues.monthly;
-  String _dropdownMonthly = monthlyList[0];
-
-  static List<String> riskList = UserConstantValues.risk;
-  String _dropdownRisk = riskList[0];
 
   final introKey = GlobalKey<IntroductionScreenState>();
 
@@ -87,7 +78,6 @@ class _OnBoardingPageState extends State<OnBoardingPage>
               icon: AnimatedIcons.arrow_menu,
               color: Colors.white,
               progress: controller,
-              // semanticLabel: 'Show menu',
             ),
             onPressed: () {
               // setState(() {
@@ -96,33 +86,29 @@ class _OnBoardingPageState extends State<OnBoardingPage>
               // });
             }),
       ),
-
       pages: [
         PageViewModel(
-          titleWidget: _buildTitle(),
-          bodyWidget: _buildInvest(),
+          titleWidget: BuildTitle(),
+          bodyWidget: BuildInvest(),
           image: _buildImage('img1.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          titleWidget: _buildTitle(),
-          bodyWidget: _buildTax(),
+          titleWidget: BuildTitle(),
+          bodyWidget: BuildTax(),
           image: _buildImage('img2.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          titleWidget: _buildTitle(),
-          bodyWidget: _buildRisk(),
+          titleWidget: BuildTitle(),
+          bodyWidget: BuildRisk(),
           image: _buildImage('img3.png'),
           decoration: pageDecoration,
         ),
       ],
-
-      //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
       showSkipButton: false,
       skipFlex: 0,
       nextFlex: 0,
-      //rtl: true, // Display as right-to-left
       curve: Curves.fastLinearToSlowEaseIn,
       controlsMargin: const EdgeInsets.all(10),
       controlsPadding: kIsWeb
@@ -137,178 +123,6 @@ class _OnBoardingPageState extends State<OnBoardingPage>
           borderRadius: BorderRadius.all(Radius.circular(25.0)),
         ),
       ),
-    );
-  }
-
-  Widget _buildTitle() {
-    return Container(
-      padding: EdgeInsets.only(right: 70, top: 15),
-      child: Text(
-        'Customize For Your Own Investment',
-        style: dheading,
-      ),
-    );
-  }
-
-  Widget _buildTax() {
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(right: 165),
-          child: Text(
-            'TAX paying individual ?',
-            style: eheading,
-          ),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Yes',
-                  style: fheading,
-                )),
-            TextButton(onPressed: () {}, child: Text('No', style: fheading)),
-          ],
-        )
-      ],
-    );
-  }
-
-  Widget _buildInvest() {
-    // bool pressGeoON = false;
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(right: 50, top: 10),
-          child: Text(
-            'How many years planning to invest?',
-            style: eheading,
-          ),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        Row(
-          children: [
-            TextButton(
-                onPressed: () {},
-                child: Text(
-                  '1 Year',
-                  style: fheading,
-                )),
-            TextButton(
-                child: Text("3 Year"),
-                style: ButtonStyle(
-                    foregroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Color(0xff0D4593)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10.0),
-                        bottomRight: Radius.circular(10.0),
-                      ),
-                    ))),
-                onPressed: () {
-                  setState(() {});
-                }),
-            TextButton(
-                onPressed: () {}, child: Text('5 Year', style: fheading)),
-            TextButton(
-                onPressed: () {}, child: Text('Above 5 Year', style: fheading)),
-          ],
-        )
-      ],
-    );
-  }
-
-  Widget _buildRisk() {
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(right: 193),
-          child: Text(
-            'Monthly Investment',
-            style: eheading,
-          ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        DropdownButton<String>(
-          value: _dropdownMonthly,
-          isExpanded: true,
-          onChanged: (String? newValue) {
-            setState(() {
-              _dropdownMonthly = newValue!;
-            });
-          },
-          items: List<DropdownMenuItem<String>>.generate(
-            monthlyList.length,
-            (int index) => new DropdownMenuItem<String>(
-              value: monthlyList[index],
-              child: new Text(
-                monthlyList[index],
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black54,
-                ),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Padding(
-          padding: EdgeInsets.only(right: 260),
-          child: Text(
-            'Risk Factor',
-            style: eheading,
-          ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        DropdownButton<String>(
-          value: _dropdownRisk,
-          isExpanded: true,
-          onChanged: (String? newValue1) {
-            setState(() {
-              _dropdownRisk = newValue1!;
-            });
-          },
-          items: List<DropdownMenuItem<String>>.generate(
-            riskList.length,
-            (int index) => new DropdownMenuItem<String>(
-              value: riskList[index],
-              child: new Text(
-                riskList[index],
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black54,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: const Center(child: Text("This is the screen after Introduction")),
     );
   }
 }
