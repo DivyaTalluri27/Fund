@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "637482000334",
+    "project_id": "fund-ae3da",
+    "storage_bucket": "fund-ae3da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637482000334:android:e8abfc9aebef71b1a5d59f",
+        "android_client_info": {
+          "package_name": "com.example.mutual_fund"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637482000334-fcl9o73le1b358et4p5400bg2hc7gstr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mutual_fund",
+            "certificate_hash": "6f157a60f3541118b29309e0bf58a6e114449032"
+          }
+        },
+        {
+          "client_id": "637482000334-ck6dt60ep9ijc1jkkf28n1g9k2vdkn4i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYA0lnv6vaPY7cLHBh1mOVCbJXR0A4zC8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637482000334-ck6dt60ep9ijc1jkkf28n1g9k2vdkn4i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
