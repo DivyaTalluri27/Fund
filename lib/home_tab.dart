@@ -30,21 +30,24 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
               padding: const EdgeInsets.only(
                   right: 30, top: 20, left: 16, bottom: 15),
               child: TextField(
+                textAlignVertical: TextAlignVertical.center,
                 onChanged: (value) => print(value),
                 decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
                   hintText: 'Search Fund...',
+                  hintTextDirection: TextDirection.ltr,
                   hintStyle: TextStyle(color: Color(0xff9F9F9F), fontSize: 13),
-                  // prefixIcon: Icon(Icons.search, color: Colors.deepOrangeAccent,
-                  // ),
-                  // prefixIcon: Image.asset('assets/icons/Search.png'),
-                  // contentPadding: EdgeInsets.all(10),
-                  contentPadding: EdgeInsets.only(left: 31),
-                  //   left: 25,
-                  // ),
-                  // contentPadding: new EdgeInsets.fromLTRB(
-                  //     10.0, 90.0, 10.0, 50.0),
+                  prefixIcon: Padding(
+                    padding: EdgeInsets.only(
+                      right: 5,
+                      left: 10,
+                    ),
+                    child: Image.asset(
+                      'assets/search.png',
+                    ),
+                  ),
+                  // contentPadding: EdgeInsets.only(bottom: 10),
                   border: OutlineInputBorder(
                     borderRadius: const BorderRadius.all(
                       Radius.circular(24.0),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//Home tab first Text and Button
 class HomeText extends StatefulWidget {
   const HomeText({Key? key}) : super(key: key);
 
@@ -45,6 +46,7 @@ class _HomeTextState extends State<HomeText> {
   }
 }
 
+//Home tab second Text and Button
 class HomeButton extends StatefulWidget {
   const HomeButton({Key? key}) : super(key: key);
 
@@ -82,6 +84,59 @@ class _HomeButtonState extends State<HomeButton> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+//Explore tab Text and button widget
+class Button extends StatelessWidget {
+  const Button({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: 30, top: 15),
+      child: Row(
+        children: [
+          Container(
+            height: 20,
+            width: 110,
+            child: ElevatedButton(
+              child: Text(
+                'RETURN 3Y',
+                style: TextStyle(
+                  color: Color(0xff44B749).withOpacity(1),
+                ),
+              ),
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      Color(0xffC3F6C5).withOpacity(0.40))),
+              onPressed: () {
+                print('Pressed');
+              },
+            ),
+          ),
+          Container(
+            width: 110,
+            height: 20,
+            margin: EdgeInsets.only(left: 130),
+            child: ElevatedButton(
+              child: Text(
+                'FILTER',
+                style: TextStyle(
+                  color: Color(0xff569BEC).withOpacity(1),
+                ),
+              ),
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      Color(0xffE0E1FA).withOpacity(1))),
+              onPressed: () {
+                print('Pressed');
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

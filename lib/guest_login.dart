@@ -38,19 +38,20 @@ class _GuestLoginState extends State<GuestLogin> {
 
   late String token;
   late String idtoken;
+  late String email;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-  Future<bool> setToken(String value) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.setString('token', value);
-  }
+  // Future<bool> setToken(String value) async {
+  //   final SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   return prefs.setString('token', value);
+  // }
 
-  Future<String?> getToken() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('token');
-  }
+  // Future<String?> getToken() async {
+  //   final SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   return prefs.getString('token');
+  // }
 
   Future<dynamic> authenticate(String idtoken) async {
     print('abcdef' + idtoken);
@@ -84,6 +85,9 @@ class _GuestLoginState extends State<GuestLogin> {
       final GoogleSignInAuthentication googleSignInAuthentication =
           await googleSignInAccount!.authentication;
 
+      email = googleSignInAccount.email;
+      print("Email  " + email);
+
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleSignInAuthentication.accessToken,
         idToken: googleSignInAuthentication.idToken,
@@ -93,6 +97,7 @@ class _GuestLoginState extends State<GuestLogin> {
 
       token = googleSignInAuthentication.accessToken!;
       idtoken = googleSignInAuthentication.idToken!;
+
       print('Access Token: ' + token);
       print('ID Token: ' + idtoken);
     } on FirebaseAuthException catch (e) {
@@ -211,12 +216,20 @@ class _GuestLoginState extends State<GuestLogin> {
                           style: TextButton.styleFrom(
                             textStyle: const TextStyle(fontSize: 10),
                           ),
-                          onPressed: () {
+                          onPressed: () async {
                             signInwithGoogle();
+
                             // signOutFromGoogle();
                             authenticate(token);
+
                             // print('bbbhd' + token);
                             signOutFromGoogle();
+                            final SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
+                            prefs.setString('token', token);
+                            final SharedPreferences pref =
+                                await SharedPreferences.getInstance();
+                            pref.setString('email', email);
                           },
                           child: const Text(
                             'CONTINUE WITH GOOGLE',

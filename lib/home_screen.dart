@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
+
 import 'package:mutual_fund/home_tab.dart';
+
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,8 +18,9 @@ class _HomeScreenState extends State<HomeScreen> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeTabScreen(),
     Text('', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('B', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('C', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    // ExploreTabScreen(),
+    Text('', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    Text('', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
   ];
 
   void _onItemTapped(int index) {
@@ -75,14 +80,14 @@ class _HomeScreenState extends State<HomeScreen> {
               AssetImage("assets/bottom2.png"),
               color: Color(0xFF3A5A98),
             ),
-            label: 'Profile',
+            label: 'Portfolio',
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage("assets/bottom3.png"),
               color: Color(0xFF3A5A98),
             ),
-            label: 'Profile',
+            label: 'Explore',
           ),
           // if (auth.userType == UserType.client)
           BottomNavigationBarItem(
@@ -90,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
               AssetImage("assets/bottom4.png"),
               color: Color(0xFF3A5A98),
             ),
-            label: 'Profile',
+            label: 'SIP',
           ),
         ],
       ),

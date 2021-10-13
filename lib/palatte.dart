@@ -39,3 +39,8 @@ const TextStyle fheading = TextStyle(
   color: Color(0xff707070),
   height: 1.2,
 );
+
+const kDefaultPaddin = 20.0;
+
+const kTextColor = Color(0xff569BEC);
+const kTextLightColor = Color(0xff2A5BA0);
